@@ -32,13 +32,7 @@ pipeline {
         branch 'main'
       }
       steps {
-        input 'Deploy to Production?'
-        milestone(1)
-        kubernetesDeploy(
-            kubeconfigId: 'kubeconfig',
-            configs: 'nx-playground-kubernetes.yml',
-            enableConfigSubstitution: true
-        )
+        sh 'kubectl apply -f nx-playground-kubernetes.yaml'
       }
     }
   } 
